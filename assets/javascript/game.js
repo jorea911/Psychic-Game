@@ -17,12 +17,14 @@ $(document).ready(function(){
     
         document.onkeyup = function recordGuesses(e, winsCounter) {
             var userInput = (e.key).toLowerCase();
-            $(".guessesSoFar").append(" " + userInput + " ");
+            if (alphabet.includes(userInput)) {
+                $(".guessesSoFar").append(" " + userInput + " ");
+            }; 
             if(randomLetter == userInput){
                 e.preventDefault();
                 winningStuff();
             }
-            else if (randomLetter!== userInput) {
+            else if (alphabet.includes(userInput) && randomLetter!== userInput) {
                 e.preventDefault();
                 lossesStuff();
                 
